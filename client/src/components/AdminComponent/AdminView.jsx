@@ -28,7 +28,9 @@ export default function AdminView() {
 
   const fetchMatchData = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/scores/match");
+      const response = await fetch(
+        "https://cric-score-tgwv.onrender.com//api/scores/match"
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -72,19 +74,22 @@ export default function AdminView() {
       setCurrentBall(currentBall + 1);
     }
     try {
-      const response = await fetch(`http://localhost:5001/api/scores/match`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          score,
-          wickets,
-          // currentBall: currentBall === 5 ? 0 : currentBall + 1,
-          // currentOver: currentBall === 5 ? over + 1 : over,
-          currentBall: currentBall + 1,
-          currentOver: over,
-          balls: updatedBalls,
-        }),
-      });
+      const response = await fetch(
+        `https://cric-score-tgwv.onrender.com/api/scores/match`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            score,
+            wickets,
+            // currentBall: currentBall === 5 ? 0 : currentBall + 1,
+            // currentOver: currentBall === 5 ? over + 1 : over,
+            currentBall: currentBall + 1,
+            currentOver: over,
+            balls: updatedBalls,
+          }),
+        }
+      );
 
       const data = await response.json();
       console.log("Match data updated:", data);

@@ -15,7 +15,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000", // Your front-end URL
+    origin: "*", // Your front-end URL
     methods: ["GET", "PATCH"],
   },
 });
@@ -23,7 +23,7 @@ const io = new Server(server, {
 // CORS setup: Specific origin is allowed
 app.use(
   cors({
-    origin: "http://localhost:3000", // Your frontend URL
+    origin: "*", // Your frontend URL
     methods: ["GET", "PATCH"],
     // credentials: true // Enable this if you need cookies or authentication
   })

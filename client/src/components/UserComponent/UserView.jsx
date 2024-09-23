@@ -19,11 +19,13 @@ export default function UserView() {
     oversData,
     setOversData,
   } = useContext(ScoreContext);
-  const socket = io("http://localhost:5001");
+  const socket = io("https://cric-score-tgwv.onrender.com/");
 
   const fetchMatchData = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/scores/match");
+      const response = await fetch(
+        "https://cric-score-tgwv.onrender.com/api/scores/match"
+      );
       const data = await response.json();
       setScore(data.score);
       setWickets(data.wickets);

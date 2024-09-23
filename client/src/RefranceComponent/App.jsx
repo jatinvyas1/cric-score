@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 // import OverListing from "./components/OverListing";
 
 // const socket = io('http://localhost:5001');
-const url = "http://localhost:5001";
+const url = "https://cric-score-tgwv.onrender.com/";
 
 function App() {
   const [completedOvers, setCompletedOvers] = useState([]);
